@@ -7,7 +7,7 @@ plugins {
 
 group = "com.github.joaophi"
 version = "1.0"
-sourceCompatibility = "1.8"
+sourceCompatibility = "11"
 
 repositories {
     mavenCentral()
@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.5.4")
+    implementation("org.webjars:bootstrap:5.1.0")
     providedRuntime("javax.servlet:jstl:1.2")
     providedRuntime("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.52")
 }
