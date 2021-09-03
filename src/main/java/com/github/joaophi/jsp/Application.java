@@ -28,17 +28,17 @@ public class Application extends SpringBootServletInitializer {
     }
 
     @GetMapping("/login")
-    public String getLogin(Model model) {
+    public String getLogin() {
         return "login";
     }
 
     @GetMapping("/requisito")
-    public String getRequisito(Model model) {
+    public String getRequisito() {
         return "requisito";
     }
 
     @GetMapping("/usuario")
-    public String getUsuario(Model model) {
+    public String getUsuario() {
         return "usuario";
     }
 }
