@@ -1,31 +1,33 @@
 package com.github.joaophi.jsp;
 
-import com.github.joaophi.jsp.model.User;
+import com.github.joaophi.jsp.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class MyUserDetails implements UserDetails {
-    private final User user;
+    private final Usuario user;
 
-    public MyUserDetails(User user) {
+    public MyUserDetails(Usuario user) {
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return user.administrator ? Collections.singleton(new SimpleGrantedAuthority("ADMIN")) : Collections.EMPTY_SET;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return user.password;
     }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.email;
     }
 
     @Override

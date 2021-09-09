@@ -17,11 +17,11 @@
             </nav>
             <div class="list-group">
                 <c:forEach var="projeto" items="${projetos}">
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="?projetoVersao=${projetoVersao}&tipo=${tipo}&projetoId=${projeto.projetoId.id}" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Projeto x</h5>
+                            <h5 class="mb-1">${projeto.nome}</h5>
                         </div>
-                        <p class="mb-1">Descrição do projeto X.</p>
+                        <p class="mb-1">${projeto.descricao}</p>
                     </a>
                 </c:forEach>
             </div>
@@ -29,29 +29,23 @@
         <div class="col-9">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Funcionais</a>
+                    <a class="nav-link active" aria-current="page" href="?projetoId=${projetoId}&projetoVersao=${projetoVersao}&tipo=FUNCIONAL">Funcionais</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Não funcionais</a>
+                    <a class="nav-link" href="?projetoId=${projetoId}&projetoVersao=${projetoVersao}&tipo=NAO_FUNCIONAL">Não funcionais</a>
                 </li>
             </ul>
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">RF001 - Funcionar</h5>
-                    </div>
-                    <p class="mb-1">O projeto deve funcionar.</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-secondary">Excluir</button>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">RF002 - Não travar</h5>
-                    </div>
-                    <p class="mb-1">O projeto não deve travar.</p>
-                    <button type="button" class="btn btn-primary">Editar</button>
-                    <button type="button" class="btn btn-secondary">Excluir</button>
-                </a>
+                <c:forEach var="requisito" items="${requisitos}">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">RF${requisito.requisitoId.id} - ${requisito.requisito}</h5>
+                        </div>
+                        <p class="mb-1">${requisito.descricao}</p>
+                        <button type="button" class="btn btn-primary">Editar</button>
+                        <button type="button" class="btn btn-secondary">Excluir</button>
+                    </a>
+                </c:forEach>
             </div>
             <button type="button" class="btn btn-primary">Novo</button>
             <button type="button" class="btn btn-secondary">Histórico</button>

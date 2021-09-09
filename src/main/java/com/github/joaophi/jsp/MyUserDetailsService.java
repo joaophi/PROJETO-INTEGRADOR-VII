@@ -1,6 +1,6 @@
 package com.github.joaophi.jsp;
 
-import com.github.joaophi.jsp.dao.UserRepository;
+import com.github.joaophi.jsp.dao.UsuarioRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
-    private final UserRepository userRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public MyUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public MyUserDetailsService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        var user = userRepository.findByEmail(username)
+        var user = usuarioRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
         return new MyUserDetails(user);
     }
